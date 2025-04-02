@@ -29,9 +29,6 @@ namespace PoryectoCatedraPrograIII.Models
 
         public bool TieneEnvio { get; set; }
 
-        public double Latitud { get; set; }
-        public double Longitud { get; set; }
-
         public List<Producto> Productos { get; set; }
         public List<Servicio> Servicios { get; set; }
         public List<EventoNegocio> EventosAsociados { get; set; }

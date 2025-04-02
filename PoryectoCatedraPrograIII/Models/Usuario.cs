@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PoryectoCatedraPrograIII.Models
 {
@@ -22,6 +23,9 @@ namespace PoryectoCatedraPrograIII.Models
         public string MetodoRegistro { get; set; } // Correo o Google
 
         public DateTime FechaRegistro { get; set; } = DateTime.UtcNow;
+
+        public int TipoUsuarioId { get; set; }
+        public TipoUsuario TipoUsuario { get; set; }
 
         public List<Review> reviews { get; set; }
         public List<Favorito> Favoritos { get; set; }

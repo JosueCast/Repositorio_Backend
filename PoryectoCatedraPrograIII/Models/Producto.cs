@@ -22,7 +22,6 @@ namespace PoryectoCatedraPrograIII.Models
 
         public string Foto { get; set; }
 
-        public string VideoReview { get; set; }
 
         [Required, MaxLength(50)]
         public string Sku { get; set; }

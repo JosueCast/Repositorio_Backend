@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PoryectoCatedraPrograIII")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3cebbf8e34203d1ce3015b0c700cba3b0f7e058c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6c58a67127832c7264bd6aaa853a172ad41aeb2a")]
 [assembly: System.Reflection.AssemblyProductAttribute("PoryectoCatedraPrograIII")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PoryectoCatedraPrograIII")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -17,6 +17,8 @@ namespace PoryectoCatedraPrograIII.Data
         public DbSet<Evento> Eventos { get; set; }
         public DbSet<Favorito> Favoritos { get; set; }
         public DbSet<EventoNegocio> EventosNegocios { get; set; }
+        public DbSet<TipoUsuario> TipoUsuarios { get; set; } // Agregamos esta línea
+
 
 
     }
