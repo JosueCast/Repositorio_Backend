@@ -12,8 +12,8 @@ using PoryectoCatedraPrograIII.Data;
 namespace PoryectoCatedraPrograIII.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20250410035818_prueba")]
-    partial class prueba
+    [Migration("20250410043439_fisrtss")]
+    partial class fisrtss
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

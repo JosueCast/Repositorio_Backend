@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PoryectoCatedraPrograIII.Migrations
 {
     /// <inheritdoc />
-    public partial class firstcommit : Migration
+    public partial class fisrtss : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -44,7 +44,8 @@ namespace PoryectoCatedraPrograIII.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    Horario = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HorarioInicio = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HoararioSalida = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FotoFachada = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Categoria = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Slogan = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -76,7 +77,6 @@ namespace PoryectoCatedraPrograIII.Migrations
                     Correo = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     Contraseña = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FotoPerfil = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MetodoRegistro = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TipoUsuarioId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -102,7 +102,6 @@ namespace PoryectoCatedraPrograIII.Migrations
                     Stock = table.Column<int>(type: "int", nullable: false),
                     Categoria = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Foto = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Sku = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Marca = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Estado = table.Column<bool>(type: "bit", nullable: false),

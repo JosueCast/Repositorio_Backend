@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace PoryectoCatedraPrograIII.Models
 {
@@ -14,21 +15,28 @@ namespace PoryectoCatedraPrograIII.Models
         [Required, EmailAddress, MaxLength(150)]
         public string Correo { get; set; }
 
-        [Required]
+        [Required, MinLength(8, ErrorMessage = "La contraseña debe tener al menos 8 caracteres.")]
         public string Contraseña { get; set; }
 
-        public string FotoPerfil { get; set; }
+        public string FotoPerfil { get; set; } // Opcional, puede ser nulo
 
-        //[Required]
-        //public string MetodoRegistro { get; set; } // Correo o Google
+       
 
+        [Required]
         public DateTime FechaRegistro { get; set; } = DateTime.UtcNow;
 
-        public int TipoUsuarioId { get; set; }
-        public TipoUsuario TipoUsuario { get; set; }
+        [Required]
+        public int TipoUsuarioId { get; set; } // Clave foránea obligatoria
 
-        public List<Review> reviews { get; set; }
-        public List<Favorito> Favoritos { get; set; }
-        
+        [JsonIgnore]
+        [ForeignKey("TipoUsuarioId")]
+        public TipoUsuario TipoUsuario { get; set; } // Relación con TipoUsuario
+
+        // Colección de reseñas relacionadas con el usuario
+        public List<Review> reviews { get; set; } = new List<Review>();
+
+        // Colección de favoritos asociados con el usuario
+        public List<Favorito> Favoritos { get; set; } = new List<Favorito>();
     }
+
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PoryectoCatedraPrograIII.Data;
+using PoryectoCatedraPrograIII.DTO;
 using PoryectoCatedraPrograIII.Models;
 using PoryectoCatedraPrograIII.Repository;
 
@@ -69,73 +70,79 @@ namespace PoryectoCatedraPrograIII.Controllers
 
 
         [HttpPost("InsertarUsuarios")]
-        public async Task<ActionResult> InsertarProducto([FromBody] Usuario usuariosDTO)
+        public async Task<ActionResult> InsertarUsuario([FromBody] UsuarioCreateDTO dto)
         {
-            if (usuariosDTO == null ||
-                string.IsNullOrWhiteSpace(usuariosDTO.Nombre) ||
-                string.IsNullOrWhiteSpace(usuariosDTO.Correo) ||
-                string.IsNullOrWhiteSpace(usuariosDTO.Contraseña) ||
-                
-                usuariosDTO.FechaRegistro == default)
+            if (dto == null ||
+                string.IsNullOrWhiteSpace(dto.Nombre) ||
+                string.IsNullOrWhiteSpace(dto.Correo) ||
+                string.IsNullOrWhiteSpace(dto.Contraseña) ||
+                dto.TipoUsuarioId <= 0)
             {
-                return BadRequest("Datos de producto inválidos.");
+                return BadRequest("Datos de usuario inválidos.");
             }
 
-            var nuevoProducto = new Usuario
+            var nuevoUsuario = new Usuario
             {
-                Nombre = usuariosDTO.Nombre,
-                Correo = usuariosDTO.Correo,
-                Contraseña = usuariosDTO.Contraseña,
-                FotoPerfil = usuariosDTO.FotoPerfil,
-                
-                FechaRegistro = usuariosDTO.FechaRegistro,
-                reviews = usuariosDTO.reviews,
-                Favoritos = usuariosDTO.Favoritos,
-
+                Nombre = dto.Nombre,
+                Correo = dto.Correo,
+                Contraseña = dto.Contraseña,
+                FotoPerfil = dto.FotoPerfil,
+                FechaRegistro = dto.FechaRegistro,
+                TipoUsuarioId = dto.TipoUsuarioId
             };
 
-            await _dao.Add(nuevoProducto);
-            await _dao.Save();
-
-            return CreatedAtAction(nameof(ObtenerPorId), new { id = nuevoProducto.Id }, nuevoProducto);
+            try
+            {
+                await _dao.Add(nuevoUsuario);
+                await _dao.Save();
+                return CreatedAtAction(nameof(ObtenerPorId), new { id = nuevoUsuario.Id }, nuevoUsuario);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
+            }
         }
 
 
+
+
         [HttpPut("EditarUsuarios/{id}")]
-        public async Task<ActionResult> ActualizarUsuario(int id, [FromBody] Usuario usuarioDTO)
+        public async Task<ActionResult> ActualizarUsuario(int id, [FromBody] UsuarioUpdateDTO dto)
         {
-            if (usuarioDTO == null ||
-                string.IsNullOrWhiteSpace(usuarioDTO.Nombre) ||
-                string.IsNullOrWhiteSpace(usuarioDTO.Correo) ||
-                
-                usuarioDTO.FechaRegistro == default)
+            if (!ModelState.IsValid)
             {
-                return BadRequest("Todos los campos obligatorios deben estar completos.");
+                return BadRequest(ModelState);
             }
 
-            // Obtener el usuario desde la base de datos
             var usuarioExistente = await _dao.GetById(id);
             if (usuarioExistente == null)
             {
                 return NotFound("Usuario no encontrado.");
             }
 
-            // Actualizar los datos del usuario existente
-            usuarioExistente.Nombre = usuarioDTO.Nombre;
-            usuarioExistente.Correo = usuarioDTO.Correo;
-            usuarioExistente.Contraseña = usuarioDTO.Contraseña; // Se recomienda encriptarla antes de guardar
-            usuarioExistente.FotoPerfil = usuarioDTO.FotoPerfil;
-            
-            usuarioExistente.FechaRegistro = usuarioDTO.FechaRegistro;
-            usuarioExistente.reviews = usuarioDTO.reviews;
-            usuarioExistente.Favoritos = usuarioDTO.Favoritos;
+            // Actualización básica de campos permitidos
+            usuarioExistente.Nombre = dto.Nombre;
+            usuarioExistente.Correo = dto.Correo;
 
-            // Realizar la actualización
-            _dao.Update(usuarioExistente);
-            await _dao.Save();
+            if (!string.IsNullOrWhiteSpace(dto.Contraseña))
+            {
+                usuarioExistente.Contraseña = dto.Contraseña; // Encriptala si es necesario
+            }
 
-            return Ok(usuarioExistente);  // Retornar el usuario actualizado
+            usuarioExistente.FotoPerfil = dto.FotoPerfil;
+
+            try
+            {
+                _dao.Update(usuarioExistente);
+                await _dao.Save();
+                return Ok(usuarioExistente);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error al actualizar: {ex.Message}");
+            }
         }
+
 
 
 
