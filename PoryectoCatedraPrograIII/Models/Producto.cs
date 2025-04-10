@@ -38,6 +38,9 @@ namespace PoryectoCatedraPrograIII.Models
         public Tienda Tienda { get; set; }
 
         public List<Review> reviews { get; set; }
+        // Relación con la tabla intermedia
+        
+
 
     }
 }

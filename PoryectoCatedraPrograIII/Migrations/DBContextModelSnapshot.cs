@@ -198,15 +198,48 @@ namespace PoryectoCatedraPrograIII.Migrations
                     b.Property<int>("TiendaId")
                         .HasColumnType("int");
 
-                    b.Property<string>("VideoReview")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("TiendaId1")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("TiendaId");
 
+                    b.HasIndex("TiendaId1");
+
                     b.ToTable("Productos");
+                });
+
+            modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Promocion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Descuento")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("FechaFin")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaInicio")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<int>("TiendaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TiendaId");
+
+                    b.ToTable("Promociones");
                 });
 
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Review", b =>
@@ -314,12 +347,6 @@ namespace PoryectoCatedraPrograIII.Migrations
                     b.Property<string>("Horario")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Latitud")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Longitud")
-                        .HasColumnType("float");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -469,9 +496,24 @@ namespace PoryectoCatedraPrograIII.Migrations
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Producto", b =>
                 {
                     b.HasOne("PoryectoCatedraPrograIII.Models.Tienda", "Tienda")
-                        .WithMany("Productos")
+                        .WithMany()
                         .HasForeignKey("TiendaId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PoryectoCatedraPrograIII.Models.Tienda", null)
+                        .WithMany("Productos")
+                        .HasForeignKey("TiendaId1");
+
+                    b.Navigation("Tienda");
+                });
+
+            modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Promocion", b =>
+                {
+                    b.HasOne("PoryectoCatedraPrograIII.Models.Tienda", "Tienda")
+                        .WithMany()
+                        .HasForeignKey("TiendaId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Tienda");

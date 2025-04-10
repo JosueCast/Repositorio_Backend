@@ -32,6 +32,8 @@ namespace PoryectoCatedraPrograIII.Models
         public List<Producto> Productos { get; set; }
         public List<Servicio> Servicios { get; set; }
         public List<EventoNegocio> EventosAsociados { get; set; }
+        
+
 
     }
 }

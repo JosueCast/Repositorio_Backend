@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PoryectoCatedraPrograIII.Migrations
 {
     /// <inheritdoc />
-    public partial class Inicial : Migration
+    public partial class firstcommit : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -45,9 +45,7 @@ namespace PoryectoCatedraPrograIII.Migrations
                     NumeroContacto = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FacebookContacto = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PaginaWeb = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TieneEnvio = table.Column<bool>(type: "bit", nullable: false),
-                    Latitud = table.Column<double>(type: "float", nullable: false),
-                    Longitud = table.Column<double>(type: "float", nullable: false)
+                    TieneEnvio = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -55,21 +53,16 @@ namespace PoryectoCatedraPrograIII.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Usuarios",
+                name: "TipoUsuarios",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Correo = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    Contraseña = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FotoPerfil = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MetodoRegistro = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Usuarios", x => x.Id);
+                    table.PrimaryKey("PK_TipoUsuarios", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -109,12 +102,12 @@ namespace PoryectoCatedraPrograIII.Migrations
                     Stock = table.Column<int>(type: "int", nullable: false),
                     Categoria = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Foto = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    VideoReview = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Sku = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Marca = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Estado = table.Column<bool>(type: "bit", nullable: false),
-                    TiendaId = table.Column<int>(type: "int", nullable: false)
+                    TiendaId = table.Column<int>(type: "int", nullable: false),
+                    TiendaId1 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -125,6 +118,34 @@ namespace PoryectoCatedraPrograIII.Migrations
                         principalTable: "Tiendas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Productos_Tiendas_TiendaId1",
+                        column: x => x.TiendaId1,
+                        principalTable: "Tiendas",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Promociones",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    Descuento = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    FechaInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaFin = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TiendaId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Promociones", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Promociones_Tiendas_TiendaId",
+                        column: x => x.TiendaId,
+                        principalTable: "Tiendas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -153,22 +174,26 @@ namespace PoryectoCatedraPrograIII.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "HistorialBusqueda",
+                name: "Usuarios",
                 columns: table => new
                 {
-                    HistorialBusquedaId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UsuarioId = table.Column<int>(type: "int", nullable: false),
-                    PalabraClave = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FechaBusqueda = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Nombre = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Correo = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    Contraseña = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FotoPerfil = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MetodoRegistro = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TipoUsuarioId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HistorialBusqueda", x => x.HistorialBusquedaId);
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_HistorialBusqueda_Usuarios_UsuarioId",
-                        column: x => x.UsuarioId,
-                        principalTable: "Usuarios",
+                        name: "FK_Usuarios_TipoUsuarios_TipoUsuarioId",
+                        column: x => x.TipoUsuarioId,
+                        principalTable: "TipoUsuarios",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -205,6 +230,27 @@ namespace PoryectoCatedraPrograIII.Migrations
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Favoritos_Usuarios_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HistorialBusqueda",
+                columns: table => new
+                {
+                    HistorialBusquedaId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UsuarioId = table.Column<int>(type: "int", nullable: false),
+                    PalabraClave = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FechaBusqueda = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HistorialBusqueda", x => x.HistorialBusquedaId);
+                    table.ForeignKey(
+                        name: "FK_HistorialBusqueda_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "Id",
@@ -286,6 +332,16 @@ namespace PoryectoCatedraPrograIII.Migrations
                 column: "TiendaId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Productos_TiendaId1",
+                table: "Productos",
+                column: "TiendaId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Promociones_TiendaId",
+                table: "Promociones",
+                column: "TiendaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_reviews_ProductoId",
                 table: "reviews",
                 column: "ProductoId");
@@ -304,6 +360,11 @@ namespace PoryectoCatedraPrograIII.Migrations
                 name: "IX_Servicios_TiendaId",
                 table: "Servicios",
                 column: "TiendaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_TipoUsuarioId",
+                table: "Usuarios",
+                column: "TipoUsuarioId");
         }
 
         /// <inheritdoc />
@@ -317,6 +378,9 @@ namespace PoryectoCatedraPrograIII.Migrations
 
             migrationBuilder.DropTable(
                 name: "HistorialBusqueda");
+
+            migrationBuilder.DropTable(
+                name: "Promociones");
 
             migrationBuilder.DropTable(
                 name: "reviews");
@@ -335,6 +399,9 @@ namespace PoryectoCatedraPrograIII.Migrations
 
             migrationBuilder.DropTable(
                 name: "Tiendas");
+
+            migrationBuilder.DropTable(
+                name: "TipoUsuarios");
         }
     }
 }
