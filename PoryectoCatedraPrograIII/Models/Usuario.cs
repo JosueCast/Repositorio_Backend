@@ -19,8 +19,8 @@ namespace PoryectoCatedraPrograIII.Models
 
         public string FotoPerfil { get; set; }
 
-        [Required]
-        public string MetodoRegistro { get; set; } // Correo o Google
+        //[Required]
+        //public string MetodoRegistro { get; set; } // Correo o Google
 
         public DateTime FechaRegistro { get; set; } = DateTime.UtcNow;
 
@@ -29,6 +29,6 @@ namespace PoryectoCatedraPrograIII.Models
 
         public List<Review> reviews { get; set; }
         public List<Favorito> Favoritos { get; set; }
-        public List<HistorialBusqueda> HistorialBusquedas { get; set; }
+        
     }
 }

@@ -12,8 +12,8 @@ using PoryectoCatedraPrograIII.Data;
 namespace PoryectoCatedraPrograIII.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20250403015647_firstcommit")]
-    partial class firstcommit
+    [Migration("20250410035818_prueba")]
+    partial class prueba
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,72 +25,6 @@ namespace PoryectoCatedraPrograIII.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Evento", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Descripcion")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Direccion")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FotoLugar")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("HoraFinal")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("HoraInicio")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<decimal>("PrecioEntrada")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Tipo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Eventos");
-                });
-
-            modelBuilder.Entity("PoryectoCatedraPrograIII.Models.EventoNegocio", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("EventoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TiendaId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventoId");
-
-                    b.HasIndex("TiendaId");
-
-                    b.ToTable("EventosNegocios");
-                });
-
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Favorito", b =>
                 {
                     b.Property<int>("Id")
@@ -98,9 +32,6 @@ namespace PoryectoCatedraPrograIII.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("EventoId")
-                        .HasColumnType("int");
 
                     b.Property<int?>("ProductoId")
                         .HasColumnType("int");
@@ -117,8 +48,6 @@ namespace PoryectoCatedraPrograIII.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EventoId");
-
                     b.HasIndex("ProductoId");
 
                     b.HasIndex("TiendaId");
@@ -126,31 +55,6 @@ namespace PoryectoCatedraPrograIII.Migrations
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("Favoritos");
-                });
-
-            modelBuilder.Entity("PoryectoCatedraPrograIII.Models.HistorialBusqueda", b =>
-                {
-                    b.Property<int>("HistorialBusquedaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HistorialBusquedaId"));
-
-                    b.Property<DateTime>("FechaBusqueda")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PalabraClave")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
-
-                    b.HasKey("HistorialBusquedaId");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.ToTable("HistorialBusqueda");
                 });
 
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Producto", b =>
@@ -190,59 +94,17 @@ namespace PoryectoCatedraPrograIII.Migrations
                     b.Property<decimal>("Precio")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Sku")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<int>("Stock")
                         .HasColumnType("int");
 
                     b.Property<int>("TiendaId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TiendaId1")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("TiendaId");
-
-                    b.HasIndex("TiendaId1");
 
                     b.ToTable("Productos");
-                });
-
-            modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Promocion", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<decimal>("Descuento")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("FechaFin")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("FechaInicio")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<int>("TiendaId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TiendaId");
-
-                    b.ToTable("Promociones");
                 });
 
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Review", b =>
@@ -283,49 +145,6 @@ namespace PoryectoCatedraPrograIII.Migrations
                     b.ToTable("reviews");
                 });
 
-            modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Servicio", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("AreaServicio")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Categoria")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Descripcion")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<int>("TiempoEstimado")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TiendaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TipoMateriales")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TiendaId");
-
-                    b.ToTable("Servicios");
-                });
-
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Tienda", b =>
                 {
                     b.Property<int>("Id")
@@ -347,7 +166,11 @@ namespace PoryectoCatedraPrograIII.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Horario")
+                    b.Property<string>("HoararioSalida")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HorarioInicio")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -371,9 +194,35 @@ namespace PoryectoCatedraPrograIII.Migrations
                     b.Property<bool>("TieneEnvio")
                         .HasColumnType("bit");
 
+                    b.Property<int>("TipoTiendasId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idTipoTiendas")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("TipoTiendasId");
+
                     b.ToTable("Tiendas");
+                });
+
+            modelBuilder.Entity("PoryectoCatedraPrograIII.Models.TipoTienda", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TipoTiendas");
                 });
 
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.TipoUsuario", b =>
@@ -418,10 +267,6 @@ namespace PoryectoCatedraPrograIII.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MetodoRegistro")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -437,31 +282,8 @@ namespace PoryectoCatedraPrograIII.Migrations
                     b.ToTable("Usuarios");
                 });
 
-            modelBuilder.Entity("PoryectoCatedraPrograIII.Models.EventoNegocio", b =>
-                {
-                    b.HasOne("PoryectoCatedraPrograIII.Models.Evento", "Evento")
-                        .WithMany("NegociosParticipantes")
-                        .HasForeignKey("EventoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PoryectoCatedraPrograIII.Models.Tienda", "Tienda")
-                        .WithMany("EventosAsociados")
-                        .HasForeignKey("TiendaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Evento");
-
-                    b.Navigation("Tienda");
-                });
-
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Favorito", b =>
                 {
-                    b.HasOne("PoryectoCatedraPrograIII.Models.Evento", "Evento")
-                        .WithMany()
-                        .HasForeignKey("EventoId");
-
                     b.HasOne("PoryectoCatedraPrograIII.Models.Producto", "Producto")
                         .WithMany()
                         .HasForeignKey("ProductoId");
@@ -476,8 +298,6 @@ namespace PoryectoCatedraPrograIII.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Evento");
-
                     b.Navigation("Producto");
 
                     b.Navigation("Tienda");
@@ -485,38 +305,12 @@ namespace PoryectoCatedraPrograIII.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("PoryectoCatedraPrograIII.Models.HistorialBusqueda", b =>
-                {
-                    b.HasOne("PoryectoCatedraPrograIII.Models.Usuario", "Usuario")
-                        .WithMany("HistorialBusquedas")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Usuario");
-                });
-
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Producto", b =>
                 {
                     b.HasOne("PoryectoCatedraPrograIII.Models.Tienda", "Tienda")
-                        .WithMany()
+                        .WithMany("Productos")
                         .HasForeignKey("TiendaId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PoryectoCatedraPrograIII.Models.Tienda", null)
-                        .WithMany("Productos")
-                        .HasForeignKey("TiendaId1");
-
-                    b.Navigation("Tienda");
-                });
-
-            modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Promocion", b =>
-                {
-                    b.HasOne("PoryectoCatedraPrograIII.Models.Tienda", "Tienda")
-                        .WithMany()
-                        .HasForeignKey("TiendaId")
-                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Tienda");
@@ -545,15 +339,15 @@ namespace PoryectoCatedraPrograIII.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Servicio", b =>
+            modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Tienda", b =>
                 {
-                    b.HasOne("PoryectoCatedraPrograIII.Models.Tienda", "Tienda")
-                        .WithMany("Servicios")
-                        .HasForeignKey("TiendaId")
+                    b.HasOne("PoryectoCatedraPrograIII.Models.TipoTienda", "TipoTiendas")
+                        .WithMany()
+                        .HasForeignKey("TipoTiendasId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Tienda");
+                    b.Navigation("TipoTiendas");
                 });
 
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Usuario", b =>
@@ -567,11 +361,6 @@ namespace PoryectoCatedraPrograIII.Migrations
                     b.Navigation("TipoUsuario");
                 });
 
-            modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Evento", b =>
-                {
-                    b.Navigation("NegociosParticipantes");
-                });
-
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Producto", b =>
                 {
                     b.Navigation("reviews");
@@ -579,18 +368,12 @@ namespace PoryectoCatedraPrograIII.Migrations
 
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Tienda", b =>
                 {
-                    b.Navigation("EventosAsociados");
-
                     b.Navigation("Productos");
-
-                    b.Navigation("Servicios");
                 });
 
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Usuario", b =>
                 {
                     b.Navigation("Favoritos");
-
-                    b.Navigation("HistorialBusquedas");
 
                     b.Navigation("reviews");
                 });

@@ -161,9 +161,9 @@ C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\ob
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.PoryectoCatedraPrograIII.props
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\scopedcss\bundle\PoryectoCatedraPrograIII.styles.css
-C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\Poryecto.39981FF5.Up2Date
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.dll
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\refint\PoryectoCatedraPrograIII.dll
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.pdb
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.genruntimeconfig.cache
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\ref\PoryectoCatedraPrograIII.dll
+C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.csproj.CopyComplete

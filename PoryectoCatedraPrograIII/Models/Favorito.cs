@@ -20,10 +20,6 @@ namespace PoryectoCatedraPrograIII.Models
         public int? TiendaId { get; set; }
         public Tienda Tienda { get; set; }
 
-        [ForeignKey("Evento")]
-        public int? EventoId { get; set; }
-        public Evento Evento { get; set; }
-
         [Required]
         public string Tipo { get; set; } // "Favorito" o "Me Interesa"
 

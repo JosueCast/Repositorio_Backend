@@ -11,7 +11,8 @@ namespace PoryectoCatedraPrograIII.Models
         [Required, MaxLength(150)]
         public string Nombre { get; set; }
 
-        public string Horario { get; set; }
+        public string HorarioInicio  { get; set; }
+        public string HoararioSalida { get; set; }
 
         public string FotoFachada { get; set; }
 
@@ -30,9 +31,9 @@ namespace PoryectoCatedraPrograIII.Models
         public bool TieneEnvio { get; set; }
 
         public List<Producto> Productos { get; set; }
-        public List<Servicio> Servicios { get; set; }
-        public List<EventoNegocio> EventosAsociados { get; set; }
-        
+
+        public int idTipoTiendas { get; set; }
+        public TipoTienda TipoTiendas { get; set; }
 
 
     }

@@ -75,7 +75,7 @@ namespace PoryectoCatedraPrograIII.Controllers
                 string.IsNullOrWhiteSpace(usuariosDTO.Nombre) ||
                 string.IsNullOrWhiteSpace(usuariosDTO.Correo) ||
                 string.IsNullOrWhiteSpace(usuariosDTO.Contraseña) ||
-                string.IsNullOrWhiteSpace(usuariosDTO.MetodoRegistro) ||
+                
                 usuariosDTO.FechaRegistro == default)
             {
                 return BadRequest("Datos de producto inválidos.");
@@ -87,13 +87,10 @@ namespace PoryectoCatedraPrograIII.Controllers
                 Correo = usuariosDTO.Correo,
                 Contraseña = usuariosDTO.Contraseña,
                 FotoPerfil = usuariosDTO.FotoPerfil,
-                MetodoRegistro = usuariosDTO.MetodoRegistro,
+                
                 FechaRegistro = usuariosDTO.FechaRegistro,
                 reviews = usuariosDTO.reviews,
                 Favoritos = usuariosDTO.Favoritos,
-                HistorialBusquedas = usuariosDTO.HistorialBusquedas
-
-
 
             };
 
@@ -110,7 +107,7 @@ namespace PoryectoCatedraPrograIII.Controllers
             if (usuarioDTO == null ||
                 string.IsNullOrWhiteSpace(usuarioDTO.Nombre) ||
                 string.IsNullOrWhiteSpace(usuarioDTO.Correo) ||
-                string.IsNullOrWhiteSpace(usuarioDTO.MetodoRegistro) ||
+                
                 usuarioDTO.FechaRegistro == default)
             {
                 return BadRequest("Todos los campos obligatorios deben estar completos.");
@@ -128,11 +125,10 @@ namespace PoryectoCatedraPrograIII.Controllers
             usuarioExistente.Correo = usuarioDTO.Correo;
             usuarioExistente.Contraseña = usuarioDTO.Contraseña; // Se recomienda encriptarla antes de guardar
             usuarioExistente.FotoPerfil = usuarioDTO.FotoPerfil;
-            usuarioExistente.MetodoRegistro = usuarioDTO.MetodoRegistro;
+            
             usuarioExistente.FechaRegistro = usuarioDTO.FechaRegistro;
             usuarioExistente.reviews = usuarioDTO.reviews;
             usuarioExistente.Favoritos = usuarioDTO.Favoritos;
-            usuarioExistente.HistorialBusquedas = usuarioDTO.HistorialBusquedas;
 
             // Realizar la actualización
             _dao.Update(usuarioExistente);
