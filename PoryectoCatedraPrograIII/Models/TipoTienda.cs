@@ -11,5 +11,7 @@ namespace PoryectoCatedraPrograIII.Models
         [Required]
         [MaxLength(50)]
         public string Nombre { get; set; }
+
+
     }
 }

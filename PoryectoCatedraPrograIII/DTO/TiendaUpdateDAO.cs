@@ -1,13 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PoryectoCatedraPrograIII.Models
+namespace PoryectoCatedraPrograIII.DTO
 {
-    public class Tienda
+    public class TiendaUpdateDTO
     {
-
-        [Key]
-        public int Id { get; set; }
+        [Required]
+        public int Id { get; set; } // Importante para saber qué tienda se actualizará
 
         [Required, MaxLength(150)]
         public string Nombre { get; set; }
@@ -38,15 +36,8 @@ namespace PoryectoCatedraPrograIII.Models
 
         public bool TieneEnvio { get; set; }
 
-        // Relación uno a muchos (una tienda puede tener muchos productos)
-        public List<Producto> Productos { get; set; } = new List<Producto>();
-
         [Required]
-        public int idTipoTiendas { get; set; }
-
-        [ForeignKey("idTipoTiendas")]
-        public TipoTienda TipoTiendas { get; set; }
-
-
+        public int idTipoTiendas { get; set; } // Clave foránea
     }
+
 }
