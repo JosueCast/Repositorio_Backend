@@ -1,4 +1,4 @@
-# Proyecto: PoryectoCatedraPrograIII - Backend
+# Proyecto Catedra PrograIII - Backend
 
 ## Descripción
 
