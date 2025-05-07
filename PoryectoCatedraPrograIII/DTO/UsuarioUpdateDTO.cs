@@ -11,8 +11,10 @@ namespace PoryectoCatedraPrograIII.DTO
         [Required, EmailAddress]
         public string Correo { get; set; }
 
-        public string Contraseña { get; set; } // Omitir si no se cambia
+        public string? Contraseña { get; set; } // Omitir si no se cambia
 
         public string FotoPerfil { get; set; }
+
+        public string Nit { get; set; }
     }
 }

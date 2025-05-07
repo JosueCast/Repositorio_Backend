@@ -3,21 +3,29 @@ using PoryectoCatedraPrograIII.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configurar Entity Framework Core con SQL Server con nuestra cadena por default agregada en en el appsetting.json
+// Configurar Entity Framework Core
 builder.Services.AddDbContext<DBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Configurar CORS (permite solicitudes desde tu frontend)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000", "http://localhost:3000") // Reemplaza con la URL de tu frontend
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials(); // Necesario si usas cookies o autenticación
+    });
+});
 
-// Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -26,8 +34,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Usar CORS (¡Debe estar antes de UseAuthorization y MapControllers!)
+app.UseCors("AllowFrontend");
+
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

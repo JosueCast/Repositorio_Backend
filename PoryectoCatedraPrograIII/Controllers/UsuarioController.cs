@@ -45,6 +45,34 @@ namespace PoryectoCatedraPrograIII.Controllers
             return Ok(usuarios);
         }
 
+        [HttpGet("ObtenerPorEmail/{email}")]
+        public async Task<ActionResult<Usuario>> ObtenerPorEmail(string email)
+        {
+            var usuario = await _dao.GetByEmail(email);
+
+            if (usuario == null)
+            {
+                return NotFound(new { mensaje = $"No se encontró el usuario con email {email}" });
+            }
+
+            return Ok(usuario);
+        }
+
+
+        [HttpGet("ObtenerPorNit/{nit}")]
+        public async Task<ActionResult<Usuario>> ObtenerPorNit(string nit)
+        {
+            var usuario = await _dao.GetByNit(nit);
+
+            if (usuario == null)
+            {
+                return NotFound(new { mensaje = $"No se encontró el usuario con el Nit {nit}" });
+            }
+
+            return Ok(usuario);
+        }
+
+
 
         [HttpDelete("EliminarUsuario/{id}")]
         public async Task<ActionResult> EliminarUsuario(int id)
@@ -75,18 +103,29 @@ namespace PoryectoCatedraPrograIII.Controllers
             if (dto == null ||
                 string.IsNullOrWhiteSpace(dto.Nombre) ||
                 string.IsNullOrWhiteSpace(dto.Correo) ||
-                string.IsNullOrWhiteSpace(dto.Contraseña) ||
                 dto.TipoUsuarioId <= 0)
             {
                 return BadRequest("Datos de usuario inválidos.");
             }
 
+            // Validar NIT si es empresa
+            if (dto.TipoUsuarioId == 2 && !string.IsNullOrWhiteSpace(dto.Nit))
+            {
+                bool nitExiste = await _dao.NitExisteAsync(dto.Nit);
+                if (nitExiste)
+                {
+                    return BadRequest("El NIT ya está registrado.");
+                }
+            }
+
+
             var nuevoUsuario = new Usuario
             {
                 Nombre = dto.Nombre,
                 Correo = dto.Correo,
-                Contraseña = dto.Contraseña,
+                Contrasena = dto.Contraseña,
                 FotoPerfil = dto.FotoPerfil,
+                nit = dto.Nit,
                 FechaRegistro = dto.FechaRegistro,
                 TipoUsuarioId = dto.TipoUsuarioId
             };
@@ -126,10 +165,11 @@ namespace PoryectoCatedraPrograIII.Controllers
 
             if (!string.IsNullOrWhiteSpace(dto.Contraseña))
             {
-                usuarioExistente.Contraseña = dto.Contraseña; // Encriptala si es necesario
+                usuarioExistente.Contrasena = dto.Contraseña; // Encriptala si es necesario
             }
 
             usuarioExistente.FotoPerfil = dto.FotoPerfil;
+            usuarioExistente.nit = dto.Nit;
 
             try
             {
