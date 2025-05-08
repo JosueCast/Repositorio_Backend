@@ -17,6 +17,13 @@ namespace PoryectoCatedraPrograIII.Repository
 
         public async Task<TipoTienda> GetById(int id) => await _context.TipoTiendas.FindAsync(id);
 
+        public async Task<TipoTienda?> GetByName(string name)
+        {
+            return await _context.TipoTiendas
+                .Where(t => t.Nombre.ToLower() == name.ToLower())
+                .FirstOrDefaultAsync();
+        }
+
         public async Task Add(TipoTienda entity) => await _context.TipoTiendas.AddAsync(entity);
 
         public void Update(TipoTienda entity)

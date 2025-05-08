@@ -16,13 +16,12 @@ namespace PoryectoCatedraPrograIII.Models
         public string HorarioInicio { get; set; }
 
         [MaxLength(50)]
-        public string HoararioSalida { get; set; }
+        public string HorarioSalida { get; set; }
 
         [MaxLength(255)]
         public string FotoFachada { get; set; }
 
-        [Required, MaxLength(100)]
-        public string Categoria { get; set; }
+       //se elemino la categoria de tienda
 
         [MaxLength(200)]
         public string Slogan { get; set; }

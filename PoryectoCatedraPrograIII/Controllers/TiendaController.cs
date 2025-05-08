@@ -51,28 +51,34 @@ namespace PoryectoCatedraPrograIII.Controllers
             return Ok(tiendas);
         }
 
+  
+
+
+
+
         //Metodo para Insertar
-      
+
         [HttpPost("Insertar_Tiendas")]
-        public async Task<ActionResult>InsertarTienda([FromBody] TiendaCreateDTO dto)
+        public async Task<ActionResult> InsertarTienda([FromBody] TiendaCreateDTO dto)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage));
+                return BadRequest(string.Join(", ", errors));
+            }
 
             var nuevaTienda = new Tienda
             {
                 Nombre = dto.Nombre,
                 HorarioInicio = dto.HorarioInicio,
-                HoararioSalida = dto.HoararioSalida,
+                HorarioSalida = dto.HorarioSalida,
                 FotoFachada = dto.FotoFachada,
-                Categoria = dto.Categoria,
                 Slogan = dto.Slogan,
                 NumeroContacto = dto.NumeroContacto,
                 FacebookContacto = dto.FacebookContacto,
                 PaginaWeb = dto.PaginaWeb,
                 TieneEnvio = dto.TieneEnvio,
                 idTipoTiendas = dto.idTipoTiendas
-                
             };
 
             try
@@ -86,6 +92,7 @@ namespace PoryectoCatedraPrograIII.Controllers
                 return StatusCode(500, $"Error interno del servidor: {ex.Message}");
             }
         }
+
 
         [HttpPut("EditarTiendas/{id}")]
         public async Task<ActionResult> ActualizarTienda(int id, [FromBody] TiendaUpdateDTO dto)
@@ -104,9 +111,8 @@ namespace PoryectoCatedraPrograIII.Controllers
             // Actualización básica de campos permitidos
             tiendaExistente.Nombre = dto.Nombre;
             tiendaExistente.HorarioInicio = dto.HorarioInicio;
-            tiendaExistente.HoararioSalida = dto.HoararioSalida;
+            tiendaExistente.HorarioSalida = dto.HorarioSalida;
             tiendaExistente.FotoFachada = dto.FotoFachada;
-            tiendaExistente.Categoria = dto.Categoria;
             tiendaExistente.Slogan = dto.Slogan;
             tiendaExistente.NumeroContacto = dto.NumeroContacto;
             tiendaExistente.FacebookContacto = dto.FacebookContacto;
@@ -123,6 +129,7 @@ namespace PoryectoCatedraPrograIII.Controllers
             }
             catch (Exception ex)
             {
+
                 return StatusCode(500, $"Error al actualizar: {ex.Message}");
             }
         }

@@ -47,6 +47,22 @@ namespace PoryectoCatedraPrograIII.Controllers
             return Ok(tipoTiendas);
         }
 
+
+        //metodo para obtenerpor Name
+        [HttpGet("ObtenerPorName/{name}")]
+        public async Task<ActionResult<TipoTiendaDAO>> ObtenerPorName(string name)
+        {
+            var tipoTiendas = await _dao.GetByName(name);
+
+            if (tipoTiendas == null)
+            {
+                return NotFound($"No se encontró la tienda con nombre: {name}");
+            }
+
+            return Ok(tipoTiendas);
+        }
+
+
         //Metodo para Insertar
         [HttpPost("Insertar_TipoTienda")]
         public async Task<ActionResult> InsertarTipoUsuario([FromBody] TipoTienda tipotiendaDTO)

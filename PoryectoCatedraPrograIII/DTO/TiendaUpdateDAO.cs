@@ -14,7 +14,7 @@ namespace PoryectoCatedraPrograIII.DTO
         public string HorarioInicio { get; set; }
 
         [MaxLength(50)]
-        public string HoararioSalida { get; set; }
+        public string HorarioSalida { get; set; }
 
         [MaxLength(255)]
         public string FotoFachada { get; set; }

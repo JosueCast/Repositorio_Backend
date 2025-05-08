@@ -14,9 +14,17 @@ namespace PoryectoCatedraPrograIII.Repository
             _context = storeContext;
         }
 
+
         public async Task<IEnumerable<Tienda>> Get() => await _context.Tiendas.ToListAsync();
 
         public async Task<Tienda> GetById(int id) => await _context.Tiendas.FindAsync(id);
+
+        public async Task<Tienda?> GetByName(string name)
+        {
+            return await _context.Tiendas
+                .Where(t => t.Nombre.ToLower() == name.ToLower())
+                .FirstOrDefaultAsync();
+        }
 
         public async Task Add(Tienda entity) => await _context.Tiendas.AddAsync(entity);
 

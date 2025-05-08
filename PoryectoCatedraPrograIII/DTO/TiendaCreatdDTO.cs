@@ -9,12 +9,10 @@ namespace PoryectoCatedraPrograIII.DTO
 
         public string HorarioInicio { get; set; }
 
-        public string HoararioSalida { get; set; }
+        public string HorarioSalida { get; set; }
 
         public string FotoFachada { get; set; }
 
-        [Required, MaxLength(100)]
-        public string Categoria { get; set; }
 
         public string Slogan { get; set; }
 

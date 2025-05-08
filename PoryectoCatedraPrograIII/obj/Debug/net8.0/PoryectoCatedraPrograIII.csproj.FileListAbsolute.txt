@@ -1,3 +1,11 @@
+C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.csproj.AssemblyReference.cache
+C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.AssemblyInfoInputs.cache
+C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.AssemblyInfo.cs
+C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.csproj.CoreCompileInputs.cache
+C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.sourcelink.json
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\bin\Debug\net8.0\appsettings.json
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\bin\Debug\net8.0\PoryectoCatedraPrograIII.exe
@@ -145,14 +153,6 @@ C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\bi
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
-C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.csproj.AssemblyReference.cache
-C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.AssemblyInfoInputs.cache
-C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.AssemblyInfo.cs
-C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.csproj.CoreCompileInputs.cache
-C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.sourcelink.json
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\staticwebassets\msbuild.PoryectoCatedraPrograIII.Microsoft.AspNetCore.StaticWebAssets.props
@@ -161,9 +161,9 @@ C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\ob
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.PoryectoCatedraPrograIII.props
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\scopedcss\bundle\PoryectoCatedraPrograIII.styles.css
+C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.csproj.CopyComplete
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.dll
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\refint\PoryectoCatedraPrograIII.dll
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.pdb
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.genruntimeconfig.cache
 C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\ref\PoryectoCatedraPrograIII.dll
-C:\Users\darks\source\repos\PoryectoCatedraPrograIII\PoryectoCatedraPrograIII\obj\Debug\net8.0\PoryectoCatedraPrograIII.csproj.CopyComplete
