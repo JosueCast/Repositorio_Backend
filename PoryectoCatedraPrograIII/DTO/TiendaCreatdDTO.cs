@@ -27,6 +27,10 @@ namespace PoryectoCatedraPrograIII.DTO
 
         [Required]
         public int idTipoTiendas { get; set; }
+
+        // Agregado para vincular con el usuario propietario de la tienda
+        [Required]
+        public int UsuarioId { get; set; }
     }
 
 }

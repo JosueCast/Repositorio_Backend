@@ -25,7 +25,7 @@ namespace PoryectoCatedraPrograIII.Controllers
         [HttpGet("LeerTiendas")]
         public async Task<ActionResult<List<Tienda>>> ObtenerListado()
         {
-            var tiendas = await _dao.Get();
+            var tiendas = await _dao.GetAll();
 
             // Verificar si la lista está vacía o es nula
             if (tiendas == null || !tiendas.Any())
@@ -78,7 +78,8 @@ namespace PoryectoCatedraPrograIII.Controllers
                 FacebookContacto = dto.FacebookContacto,
                 PaginaWeb = dto.PaginaWeb,
                 TieneEnvio = dto.TieneEnvio,
-                idTipoTiendas = dto.idTipoTiendas
+                idTipoTiendas = dto.idTipoTiendas,
+                UsuarioId = dto.UsuarioId
             };
 
             try

@@ -30,10 +30,10 @@ namespace PoryectoCatedraPrograIII.Models
         public string NumeroContacto { get; set; }
 
         [MaxLength(150)]
-        public string FacebookContacto { get; set; }
+        public string? FacebookContacto { get; set; }
 
         [MaxLength(150)]
-        public string PaginaWeb { get; set; }
+        public string? PaginaWeb { get; set; }
 
         public bool TieneEnvio { get; set; }
 
@@ -46,6 +46,11 @@ namespace PoryectoCatedraPrograIII.Models
         [ForeignKey("idTipoTiendas")]
         public TipoTienda TipoTiendas { get; set; }
 
+
+        public int? UsuarioId { get; set; }
+
+        [ForeignKey("UsuarioId")]
+        public Usuario? Usuario { get; set; }
 
     }
 }

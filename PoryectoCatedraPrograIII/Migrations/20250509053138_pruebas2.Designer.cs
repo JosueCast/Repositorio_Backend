@@ -12,8 +12,8 @@ using PoryectoCatedraPrograIII.Data;
 namespace PoryectoCatedraPrograIII.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20250410065808_second")]
-    partial class second
+    [Migration("20250509053138_pruebas2")]
+    partial class pruebas2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,13 +65,7 @@ namespace PoryectoCatedraPrograIII.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Categoria")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<string>("Descripcion")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Estado")
@@ -93,9 +87,6 @@ namespace PoryectoCatedraPrograIII.Migrations
 
                     b.Property<decimal>("Precio")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Stock")
-                        .HasColumnType("int");
 
                     b.Property<int>("TiendaId")
                         .HasColumnType("int");
@@ -153,13 +144,7 @@ namespace PoryectoCatedraPrograIII.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Categoria")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<string>("FacebookContacto")
-                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
@@ -168,12 +153,12 @@ namespace PoryectoCatedraPrograIII.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("HoararioSalida")
+                    b.Property<string>("HorarioInicio")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("HorarioInicio")
+                    b.Property<string>("HorarioSalida")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -189,7 +174,6 @@ namespace PoryectoCatedraPrograIII.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("PaginaWeb")
-                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
@@ -201,10 +185,15 @@ namespace PoryectoCatedraPrograIII.Migrations
                     b.Property<bool>("TieneEnvio")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.Property<int>("idTipoTiendas")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
 
                     b.HasIndex("idTipoTiendas");
 
@@ -255,8 +244,7 @@ namespace PoryectoCatedraPrograIII.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Contraseña")
-                        .IsRequired()
+                    b.Property<string>("Contrasena")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Correo")
@@ -278,6 +266,9 @@ namespace PoryectoCatedraPrograIII.Migrations
 
                     b.Property<int>("TipoUsuarioId")
                         .HasColumnType("int");
+
+                    b.Property<string>("nit")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -323,7 +314,7 @@ namespace PoryectoCatedraPrograIII.Migrations
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Review", b =>
                 {
                     b.HasOne("PoryectoCatedraPrograIII.Models.Producto", "Producto")
-                        .WithMany("reviews")
+                        .WithMany("Reviews")
                         .HasForeignKey("ProductoId");
 
                     b.HasOne("PoryectoCatedraPrograIII.Models.Tienda", "Tienda")
@@ -345,13 +336,19 @@ namespace PoryectoCatedraPrograIII.Migrations
 
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Tienda", b =>
                 {
-                    b.HasOne("PoryectoCatedraPrograIII.Models.TipoTienda", "TipoTiendas")
+                    b.HasOne("PoryectoCatedraPrograIII.Models.Usuario", "Usuario")
                         .WithMany()
+                        .HasForeignKey("UsuarioId");
+
+                    b.HasOne("PoryectoCatedraPrograIII.Models.TipoTienda", "TipoTiendas")
+                        .WithMany("Tiendas")
                         .HasForeignKey("idTipoTiendas")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("TipoTiendas");
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Usuario", b =>
@@ -367,12 +364,17 @@ namespace PoryectoCatedraPrograIII.Migrations
 
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Producto", b =>
                 {
-                    b.Navigation("reviews");
+                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Tienda", b =>
                 {
                     b.Navigation("Productos");
+                });
+
+            modelBuilder.Entity("PoryectoCatedraPrograIII.Models.TipoTienda", b =>
+                {
+                    b.Navigation("Tiendas");
                 });
 
             modelBuilder.Entity("PoryectoCatedraPrograIII.Models.Usuario", b =>
